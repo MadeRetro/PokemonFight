@@ -1,5 +1,3 @@
-// PokemonFight.cpp : This file contains the 'main' function. Program execution begins and ends there.
-
 #pragma once
 
 #include "Trainer.h"

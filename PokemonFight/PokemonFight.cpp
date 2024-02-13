@@ -18,16 +18,24 @@ int main() {
     Trainer misty("Misty", "Waterflower", "Let's go, Starmie!", 900, 90, 6, 8);
     Trainer brock("Brock", "Rock-Solid", "Geodude, let's rock!", 800, 80, 6, 6);
 
+
+
     Pokemon pikachu("Pikachu", "Electric mouse", PokeType::Electric, 10, 50);
     Ability thunderShock("Thunder Shock", 15, PokeType::Electric, 5);
-    pikachu.LearnAbility(thunderShock);
 
     Pokemon starmie("Starmie", "Water-psychic star", PokeType::Water, 12, 60);
     Ability waterGun("Water Gun", 12, PokeType::Water, 5);
-    starmie.LearnAbility(waterGun);
 
     Pokemon geodude("Geodude", "Rock-ground rock", PokeType::Rock, 8, 40);
     Ability rockThrow("Rock Throw", 10, PokeType::Rock, 5);
+
+
+    pikachu.LearnAbility(thunderShock);
+
+
+    starmie.LearnAbility(waterGun);
+
+
     geodude.LearnAbility(rockThrow);
 
 

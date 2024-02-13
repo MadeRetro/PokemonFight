@@ -4,6 +4,7 @@
 Pokemon::Pokemon(std::string name, std::string description, PokeType type, int level, int life)
     : name(name), description(description), type(type), level(level), life(life) {}
 
+
 void Pokemon::LearnAbility(Ability ability) {
     abilities.push_back(ability);
 }

@@ -216,9 +216,78 @@ int main() {
 
 
         }
+
+
         else if (actionChoice == 2) {
             // Implement logic for fighting another trainer
             // ...
+
+            // Simulate a wild Pokemon encounter
+            int opponentPokemonIndex = std::rand() % 3; // Assuming 3 wild Pokemon available
+            Pokemon opponentPokemon1 = (opponentPokemonIndex == 0) ? pikachu : ((opponentPokemonIndex == 1) ? starmie : geodude);
+            Pokemon opponentPokemon2 = (opponentPokemonIndex == 0) ? pikachu : ((opponentPokemonIndex == 1) ? starmie : geodude);
+
+            while ((currentPokemon->GetLife() > 0 || otherPokemon->GetLife() > 0) &&
+                (opponentPokemon1.GetLife() > 0 || opponentPokemon2.GetLife() > 0)) {
+
+                std::cout << "\n\n1- Use an ability   2- Switch Pokemons" << std::endl;
+
+                int actionChoice;
+                std::cin >> actionChoice;
+
+                if (actionChoice == 1) {
+                    std::cout << currentPokemon->GetName() << " abilities : " << std::endl;
+
+                    const std::vector<Ability>& abilities = currentPokemon->GetAbilities();
+                    for (const auto& ability : abilities) {
+                        std::cout << ability.GetName() << "\n";
+
+                        if (ability.GetRemainingUses() > 0) {
+                            int damage = ability.GetDamage();
+
+                            // Choose opponent's Pokémon to attack
+                            Pokemon targetPokemon = (opponentPokemon1.GetLife() > 0) ? opponentPokemon1 : opponentPokemon2;
+                            targetPokemon.TakeDamage(damage);
+
+                            std::cout << targetPokemon.GetName() << " has now " << targetPokemon.GetLife() << " HP ";
+                            std::cout << "\nYour " << currentPokemon->GetName() << " has now " << currentPokemon->GetLife() << " HP ";
+
+                            ability.DecreaseMaxUses();
+                            std::cout << "\nRemaining uses: " << ability.GetRemainingUses() << "";
+                        }
+                        else {
+                            std::cout << "\nYou can't use this ability anymore, your Pokemon needs to rest!! \n";
+                            std::cout << "Therefore, you lose your turn... Try to let your Pokemons rest next time :/\n";
+                        }
+                    }
+                }
+                else if (actionChoice == 2) {
+                    // Switch Pokémon
+                    std::swap(currentPokemon, otherPokemon);
+                    std::cout << "\nYour current Pokemon is now " << currentPokemon->GetName() << " (remaining life " << currentPokemon->GetLife() << ") ";
+                }
+
+                // Opponent's turn
+                // Implement logic to choose ability and attack player's Pokémon
+                // ...
+
+                // Check if player's Pokémon fainted and switch if needed
+                if (currentPokemon->GetLife() == 0 && otherPokemon->GetLife() > 0) {
+                    std::swap(currentPokemon, otherPokemon);
+                    std::cout << "\nYour current Pokemon is now " << currentPokemon->GetName() << " (remaining life " << currentPokemon->GetLife() << ") ";
+                }
+            }
+
+            // Determine the winner of the battle
+            if (opponentPokemon1.GetLife() == 0 && opponentPokemon2.GetLife() == 0) {
+                std::cout << "Congratulations! You defeated the Trainer!\n";
+            }
+            else {
+                std::cout << "\nYou were defeated by the Trainer... That's tough :/\n";
+            }
+
+
+
         }
         else {
             std::cout << "Invalid choice. Exiting." << std::endl;

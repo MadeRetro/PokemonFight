@@ -21,3 +21,7 @@ private:
     PokeType type;
     int remainingUses;
 };
+
+extern Ability thunderShock;
+extern Ability waterGun;
+extern Ability rockThrow;

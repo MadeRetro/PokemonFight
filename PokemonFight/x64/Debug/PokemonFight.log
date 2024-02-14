@@ -1,4 +1,3 @@
-﻿  Battle.cpp
-  Trainer.cpp
-  Generating Code...
+﻿  PokemonFight.cpp
+C:\Users\remy.chollet\Documents\GitHub\PokemonFight\PokemonFight\PokemonFight.cpp(16,25): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   PokemonFight.vcxproj -> C:\Users\remy.chollet\Documents\GitHub\PokemonFight\x64\Debug\PokemonFight.exe

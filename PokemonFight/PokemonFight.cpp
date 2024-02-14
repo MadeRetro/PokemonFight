@@ -6,6 +6,9 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include "PokemonFight.h"
+
+
 using namespace std;
 
 
@@ -17,17 +20,6 @@ int main() {
     Trainer ash("Ash", "Ketchum", "I choose you!", 1000, 100, 6, 10);
     Trainer misty("Misty", "Waterflower", "Let's go, Starmie!", 900, 90, 6, 8);
     Trainer brock("Brock", "Rock-Solid", "Geodude, let's rock!", 800, 80, 6, 6);
-
-
-
-    Pokemon pikachu("Pikachu", "Electric mouse", PokeType::Electric, 10, 50);
-    Ability thunderShock("Thunder Shock", 15, PokeType::Electric, 5);
-
-    Pokemon starmie("Starmie", "Water-psychic star", PokeType::Water, 12, 60);
-    Ability waterGun("Water Gun", 12, PokeType::Water, 5);
-
-    Pokemon geodude("Geodude", "Rock-ground rock", PokeType::Rock, 8, 40);
-    Ability rockThrow("Rock Throw", 10, PokeType::Rock, 5);
 
 
     pikachu.LearnAbility(thunderShock);
@@ -84,6 +76,28 @@ int main() {
             return 1;
         }
 
+        std::cout << "\nChoose your second Pokemon (1. Pikachu, 2. Starmie, 3. Geodude) : ";
+        int pokemonChoice2;
+        std::cin >> pokemonChoice2;
+
+        Pokemon* otherPokemon = nullptr;
+
+        switch (pokemonChoice2) {
+        case 1:
+            otherPokemon = &pikachu;
+            break;
+        case 2:
+            otherPokemon = &starmie;
+            break;
+        case 3:
+            otherPokemon = &geodude;
+            break;
+        default:
+            std::cout << "Invalid choice. Exiting." << std::endl;
+            return 1;
+        }
+
+
         currentTrainer->SendOutPokemon(pokemonChoice - 1);
 
         // Choose action (1. Capture Pokemon, 2. Fight Trainer)
@@ -101,6 +115,55 @@ int main() {
             // Start the battle
             Battle wildBattle(*currentTrainer, wildPokemon);
             wildBattle.Start();
+
+
+            while (currentPokemon->GetLife() > 0 || wildPokemon.GetLife() > 0) {
+
+                std::cout << "\n1- Use an ability   2- Switch Pokemons" << std::endl;
+
+                int actionChoice;
+                std::cin >> actionChoice;
+
+                if (actionChoice == 1) {
+
+                    std::cout << currentPokemon->GetName() << " abilities : " << std::endl;
+
+                    const std::vector<Ability>& abilities = currentPokemon->GetAbilities();
+                    for (const auto& ability : abilities) {
+                        std::cout << ability.GetName() << "\n";
+                        int damage = ability.GetDamage();
+                        wildPokemon.TakeDamage(damage);
+                        std::cout << wildPokemon.GetName() << " remaining life " << wildPokemon.GetLife() << " ";
+                        std::cout << "\nYour " << currentPokemon->GetName() << " remaining life " << currentPokemon->GetLife() << " ";
+                    }
+
+
+                    std::cout << std::endl;
+
+
+                }
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             // Check if the wild Pokemon was captured
             if (wildBattle.GetPlayerWins()) {

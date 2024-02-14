@@ -47,5 +47,8 @@
     <ClInclude Include="PokeType.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="PokemonFight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

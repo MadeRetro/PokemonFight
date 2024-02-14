@@ -1,4 +1,3 @@
-// Pokemon.cpp
 #include "Pokemon.h"
 
 Pokemon::Pokemon(std::string name, std::string description, PokeType type, int level, int life)
@@ -52,3 +51,18 @@ int Pokemon::GetLife() const {
 const std::vector<Ability>& Pokemon::GetAbilities() const {
     return abilities;
 }
+
+void Pokemon::TakeDamage(int damage) {
+    life -= damage;
+    if (life < 0) {
+        life = 0;  // Ensure life doesn't go below zero
+    }
+}
+
+Pokemon pikachu("Pikachu", "Electric mouse", PokeType::Electric, 10, 50);
+
+
+Pokemon starmie("Starmie", "Water-psychic star", PokeType::Water, 12, 60);
+
+
+Pokemon geodude("Geodude", "Rock-ground rock", PokeType::Rock, 8, 40);

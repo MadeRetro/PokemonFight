@@ -137,6 +137,7 @@
     <ClInclude Include="Ability.h" />
     <ClInclude Include="Battle.h" />
     <ClInclude Include="Pokemon.h" />
+    <ClInclude Include="PokemonFight.h" />
     <ClInclude Include="PokeType.h" />
     <ClInclude Include="Trainer.h" />
   </ItemGroup>

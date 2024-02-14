@@ -15,6 +15,7 @@ public:
     void Rest();
     void GetInBall();
     void GetOutBall();
+    void TakeDamage(int damage);
 
     std::string GetName() const;
     std::string GetDescription() const;
@@ -32,5 +33,9 @@ private:
     std::vector<Ability> abilities;
     bool inBall;
 };
+
+extern Pokemon pikachu;
+extern Pokemon starmie;
+extern Pokemon geodude;
 
 

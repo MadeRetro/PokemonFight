@@ -48,6 +48,6 @@ void Ability::ResetUses() const{
     remainingUses = 4; // Reset to max uses
 }
 
-Ability thunderShock("Thunder Shock", 15, PokeType::Electric, 2);
+Ability thunderShock("Thunder Shock", 15, PokeType::Electric, 4);
 Ability waterGun("Water Gun", 12, PokeType::Water, 4);
 Ability rockThrow("Rock Throw", 10, PokeType::Rock, 4);

@@ -18,30 +18,30 @@ std::string Trainer::GetName() const {
 }
 
 void Trainer::Challenge(Trainer& opponent) {
-    std::cout << "Trainer " << firstName << " challenges Trainer " << opponent.firstName << " to a battle!" << std::endl;
+    std::cout << "Trainer " << firstName << " challenges Trainer " << opponent.firstName << " to a battle!\n" << std::endl;
 }
 
 void Trainer::CapturePokemon(Pokemon wildPokemon) {
     if (party.size() < maxPokemon) {
         party.push_back(wildPokemon);
-        std::cout << "Trainer " << firstName << " captures a wild " << wildPokemon.GetName() << "!" << std::endl;
+        std::cout << "Trainer " << firstName << " captures a wild " << wildPokemon.GetName() << "!\n" << std::endl;
     }
     else {
-        std::cout << "Trainer " << firstName << "'s party is full. Cannot capture " << wildPokemon.GetName() << "." << std::endl;
+        std::cout << "Trainer " << firstName << "'s party is full. Cannot capture " << wildPokemon.GetName() << ".\n" << std::endl;
     }
 }
 
 void Trainer::SendOutPokemon(int index) {
     if (index >= 0 && index < party.size()) {
         party[index].GetOutBall();
-        std::cout << "Trainer " << firstName << " sends out " << party[index].GetName() << "!" << std::endl;
+        std::cout << "Trainer " << firstName << " sends out " << party[index].GetName() << "!\n" << std::endl;
     }
 }
 
 void Trainer::ChangePokemon(int index) {
     if (index >= 0 && index < party.size()) {
         party[index].GetInBall();
-        std::cout << "Trainer " << firstName << " recalls " << party[index].GetName() << "." << std::endl;
+        std::cout << "Trainer " << firstName << " recalls " << party[index].GetName() << ".\n" << std::endl;
     }
 }
 

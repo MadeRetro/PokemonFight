@@ -252,6 +252,7 @@ int main() {
 
             while (opponent.GetName() == currentTrainer->GetName()) {
 
+                int opponentIndex = std::rand() % 3;
                 Trainer opponent = (opponentIndex == 0) ? ash : ((opponentIndex == 1) ? misty : brock);
             }
 
@@ -357,6 +358,10 @@ int main() {
             // Determine the winner of the battle
             if (opponentPokemon1.GetLife() == 0 && opponentPokemon2.GetLife() == 0) {
                 std::cout << "Congratulations! You defeated the Trainer!\n\n";
+
+                currentTrainer->EarnMoney(10);
+                currentTrainer->EarnPokeballs(1);
+
             }
             else if (currentPokemon->GetLife() == 0 && otherPokemon->GetLife() == 0) {
                 std::cout << "\nYou were defeated by the Trainer... That's tough :/\n\n";

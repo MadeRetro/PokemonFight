@@ -6,7 +6,7 @@
 using namespace std;
 
 Ability::Ability(std::string name, int damage, PokeType type, int maxUses)
-    : name(name), damage(damage), type(type), remainingUses(maxUses) {}
+    : name(name), damage(damage), type(type), remainingUses(maxUses), maxUses(maxUses) {}
 
 std::string Ability::GetName() const {
     return name;
@@ -32,6 +32,15 @@ void Ability::Use() {
     }
     else {
         std::cout << "You can't use this ability, your pokemon needs to rest !! ";
+    }
+}
+
+void Ability::DecreaseMaxUses() const{
+    if (maxUses > 0) {
+        maxUses--;
+    }
+    if (remainingUses > 0) {
+        remainingUses--;
     }
 }
 

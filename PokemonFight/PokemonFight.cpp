@@ -121,7 +121,8 @@ int main() {
 
             while ((currentPokemon->GetLife() > 0 || otherPokemon->GetLife() > 0) && wildPokemon.GetLife() > 0) {
 
-                std::cout << "\n1- Use an ability   2- Switch Pokemons" << std::endl;
+                std::cout << "\n\n1- Use an ability   2- Switch Pokemons" << std::endl;
+
 
                 int actionChoice;
                 std::cin >> actionChoice;
@@ -142,14 +143,14 @@ int main() {
                             std::cout << wildPokemon.GetName() << " has now " << wildPokemon.GetLife() << " HP ";
                             std::cout << "\nYour " << currentPokemon->GetName() << " has now " << currentPokemon->GetLife() << " HP ";
 
-                            ability.GetRemainingUses();
+                            ability.DecreaseMaxUses();
                             std::cout << "\nReamining uses : " << ability.remainingUses << "";
 
                         }
 
                         else {
 
-                            std::cout << "\n You can't use this ability anymore, your Pokemon needs to rest !! ";
+                            std::cout << "\nYou can't use this ability anymore, your Pokemon needs to rest !! \nTherefore you loose your turn...Try to let your Pokemons rest next time :/";
 
                         }
 

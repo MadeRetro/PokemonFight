@@ -14,12 +14,17 @@ public:
 
     void Use();
     void ResetUses();
-    int remainingUses;
+
+    // New function to decrease maxUses
+    void DecreaseMaxUses() const;
+
+    mutable int remainingUses;
 
 private:
     std::string name;
     int damage;
     PokeType type;
+    mutable int maxUses;
 
 };
 

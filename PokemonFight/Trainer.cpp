@@ -2,7 +2,6 @@
 #include "Pokemon.h"
 #include <string>
 #include <vector>
-
 // Trainer.cpp
 #include "Trainer.h"
 #include <iostream>
@@ -11,12 +10,15 @@ Trainer::Trainer(std::string firstName, std::string lastName, std::string catchp
     : firstName(firstName), lastName(lastName), catchphrase(catchphrase), money(money), lifePoints(lifePoints), maxPokemon(maxPokemon), numPokeballs(numPokeballs) {}
 
 void Trainer::Introduce() const {
-    std::cout << "Hi, I'm " << firstName << " " << lastName << ". " << catchphrase << std::endl;
+    std::cout << "Hi, I'm " << firstName << " " << lastName << ". " << catchphrase << "\n\n" << std::endl;
+}
+
+std::string Trainer::GetName() const {
+    return firstName;
 }
 
 void Trainer::Challenge(Trainer& opponent) {
     std::cout << "Trainer " << firstName << " challenges Trainer " << opponent.firstName << " to a battle!" << std::endl;
-    // Implement battle logic here
 }
 
 void Trainer::CapturePokemon(Pokemon wildPokemon) {
@@ -44,11 +46,10 @@ void Trainer::ChangePokemon(int index) {
 }
 
 void Trainer::UsePokemonAbility(int abilityIndex, Pokemon& target) {
-    // Implement logic to use Pokemon's ability on the target
+
     if (!party.empty() && abilityIndex >= 0 && abilityIndex < party[0].GetAbilities().size()) {
         party[0].UseAbility(abilityIndex);
-        // Deal damage to the target based on the ability
-        // target.TakeDamage(...);
+
     }
 }
 

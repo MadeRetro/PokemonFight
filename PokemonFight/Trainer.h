@@ -15,6 +15,7 @@ public:
     void ChangePokemon(int index);
     void UsePokemonAbility(int abilityIndex, Pokemon& target);
     void EarnMoney(int amount);
+    std :: string GetName() const;
     void EarnPokeballs(int amount);
     int GetPartySize() const;
 

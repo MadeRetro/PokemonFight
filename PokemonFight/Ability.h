@@ -13,7 +13,7 @@ public:
     int GetRemainingUses() const;
 
     void Use();
-    void ResetUses();
+    void ResetUses() const;
 
     // New function to decrease maxUses
     void DecreaseMaxUses() const;

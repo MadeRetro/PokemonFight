@@ -48,6 +48,6 @@ void Ability::ResetUses() {
     remainingUses = 0; // Reset to max uses
 }
 
-Ability thunderShock("Thunder Shock", 15, PokeType::Electric, 5);
-Ability waterGun("Water Gun", 12, PokeType::Water, 2);
-Ability rockThrow("Rock Throw", 10, PokeType::Rock, 5);
+Ability thunderShock("Thunder Shock", 15, PokeType::Electric, 4);
+Ability waterGun("Water Gun", 12, PokeType::Water, 4);
+Ability rockThrow("Rock Throw", 10, PokeType::Rock, 4);

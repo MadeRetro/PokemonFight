@@ -215,22 +215,6 @@ int main() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-            // Check if the wild Pokemon was captured
-            if (wildBattle.GetPlayerWins()) {
-                std::cout << "Congratulations! You captured the wild " << wildPokemon.GetName() << "!" << std::endl;
-            }
         }
         else if (actionChoice == 2) {
             // Implement logic for fighting another trainer
@@ -242,7 +226,7 @@ int main() {
         }
 
         // Ask if the user wants to play again
-        std::cout << "Do you want to play again? (1. Yes, 2. No): ";
+        std::cout << "Do you want to play again? :)  (1. Yes, 2. No) ";
         int playAgainChoice;
         std::cin >> playAgainChoice;
 

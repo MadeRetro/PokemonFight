@@ -3,6 +3,7 @@
 #include "Trainer.h"
 #include "Pokemon.h"
 #include "Battle.h"
+#include "Ability.h"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -60,6 +61,7 @@ int main() {
         std::cin >> pokemonChoice;
 
         Pokemon* currentPokemon = nullptr;
+        Pokemon* third = nullptr;
 
         switch (pokemonChoice) {
         case 1:
@@ -117,7 +119,7 @@ int main() {
             wildBattle.Start();
 
 
-            while (currentPokemon->GetLife() > 0 || wildPokemon.GetLife() > 0) {
+            while ((currentPokemon->GetLife() > 0 || otherPokemon->GetLife() > 0) && wildPokemon.GetLife() > 0) {
 
                 std::cout << "\n1- Use an ability   2- Switch Pokemons" << std::endl;
 
@@ -131,10 +133,26 @@ int main() {
                     const std::vector<Ability>& abilities = currentPokemon->GetAbilities();
                     for (const auto& ability : abilities) {
                         std::cout << ability.GetName() << "\n";
-                        int damage = ability.GetDamage();
-                        wildPokemon.TakeDamage(damage);
-                        std::cout << wildPokemon.GetName() << " remaining life " << wildPokemon.GetLife() << " ";
-                        std::cout << "\nYour " << currentPokemon->GetName() << " remaining life " << currentPokemon->GetLife() << " ";
+
+                        if (ability.GetRemainingUses() > 0) {
+
+
+                            int damage = ability.GetDamage();
+                            wildPokemon.TakeDamage(damage);
+                            std::cout << wildPokemon.GetName() << " has now " << wildPokemon.GetLife() << " HP ";
+                            std::cout << "\nYour " << currentPokemon->GetName() << " has now " << currentPokemon->GetLife() << " HP ";
+
+                            ability.GetRemainingUses();
+                            std::cout << "\nReamining uses : " << ability.remainingUses << "";
+
+                        }
+
+                        else {
+
+                            std::cout << "\n You can't use this ability anymore, your Pokemon needs to rest !! ";
+
+                        }
+
                     }
 
 
@@ -144,12 +162,55 @@ int main() {
                 }
 
 
+                else if (actionChoice == 2){
+
+                    third = currentPokemon;
+                    currentPokemon = otherPokemon;
+                    otherPokemon = third;
+                    std::cout << "\nYour current Pokemon is now " << currentPokemon->GetName() << " (remaining life " << currentPokemon->GetLife() << ") ";
+
+
+                }
+
+
+
+                if (wildPokemon.GetLife() > 0) {
+
+                    const std::vector<Ability>& abilities = wildPokemon.GetAbilities();
+                    for (const auto& ability : abilities) {
+                        //std::cout << ability.GetName() << "\n";
+                        int damage = ability.GetDamage();
+                        currentPokemon->TakeDamage(damage);
+                        std::cout << "\n" << wildPokemon.GetName() << " is attacking you with " << ability.GetName() << " !";
+                    }
+
+                    std::cout << "\nYour " << currentPokemon->GetName() << " has now " << currentPokemon->GetLife() << " HP ";
+
+                    if (currentPokemon->GetLife() == 0 && otherPokemon->GetLife() > 0) {
+
+                        third = currentPokemon;
+                        currentPokemon = otherPokemon;
+                        otherPokemon = third;
+                        std::cout << "\nYour current Pokemon is now " << currentPokemon->GetName() << " (remaining life " << currentPokemon->GetLife() << ") ";
+                    }
+
+                }
+
+
             }
 
 
+            if (wildPokemon.GetLife() == 0) {
 
+                std::cout << "Congratulations! You captured the wild " << wildPokemon.GetName() << "!" << std::endl;
 
+            }
 
+            if (currentPokemon->GetLife() == 0 && otherPokemon->GetLife() == 0 && third->GetLife() == 0) {
+
+                std::cout << "\nYou were defeated by " << wildPokemon.GetName() << "... That sucks :/ " << std::endl;
+
+            }
 
 
 

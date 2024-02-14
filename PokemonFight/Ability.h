@@ -14,12 +14,13 @@ public:
 
     void Use();
     void ResetUses();
+    int remainingUses;
 
 private:
     std::string name;
     int damage;
     PokeType type;
-    int remainingUses;
+
 };
 
 extern Ability thunderShock;

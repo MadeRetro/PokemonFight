@@ -2,6 +2,8 @@
 #pragma once
 #include <string>
 #include "Ability.h"
+#include <iostream>
+using namespace std;
 
 Ability::Ability(std::string name, int damage, PokeType type, int maxUses)
     : name(name), damage(damage), type(type), remainingUses(maxUses) {}
@@ -20,12 +22,16 @@ PokeType Ability::GetType() const {
 
 int Ability::GetRemainingUses() const {
     return remainingUses;
+
 }
 
 void Ability::Use() {
     if (remainingUses > 0) {
         // Perform ability action
         remainingUses--;
+    }
+    else {
+        std::cout << "You can't use this ability, your pokemon needs to rest !! ";
     }
 }
 
@@ -34,5 +40,5 @@ void Ability::ResetUses() {
 }
 
 Ability thunderShock("Thunder Shock", 15, PokeType::Electric, 5);
-Ability waterGun("Water Gun", 12, PokeType::Water, 5);
+Ability waterGun("Water Gun", 12, PokeType::Water, 2);
 Ability rockThrow("Rock Throw", 10, PokeType::Rock, 5);
